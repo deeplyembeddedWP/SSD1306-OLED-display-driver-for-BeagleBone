@@ -16,4 +16,13 @@ Youtube: https://youtu.be/sDKf6zW6Pyg
 
 MIT license, check LICENSE file for more information
 
+Hardware connections are as shown below:
+
+Beagle + SSD1306  
+P9_19  - I2C2_SCL
+P9_20  - I2C2_SDA
+----------------
+P9_02  - GND
+P9_03  - DC_3.3V
+
 This Library is written in C. To use it, just include the I2C and SSD1306 Libraries in your project.
