@@ -62,7 +62,7 @@ static GFXfontPtr gfxFont;
 extern I2C_DeviceT I2C_DEV_2;
 
 /* Chunk Buffer */
-static unsigned char chunk[16] = {0};
+static unsigned char chunk[17] = {0};
 
 /* Memory buffer for displaying data on LCD - This is an Apple - Fruit */
 static unsigned char screen[DISPLAY_BUFF_SIZE] ={0};
