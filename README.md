@@ -8,15 +8,9 @@ The Library has 3 components:
 
 Written by: Vinay Divakar
 
-Website: www.deeplyembedded.org
-
 Youtube: https://youtu.be/sDKf6zW6Pyg
 
 MIT license, check LICENSE file for more information
-
-Hardware connections are as shown below link:
-
-Blog Post: https://deeplyembedded.org/ssd1306-oled-driver-beaglebone/
 
 
 This Library is written in C. To use it, just include the I2C and SSD1306 Libraries in your project.
