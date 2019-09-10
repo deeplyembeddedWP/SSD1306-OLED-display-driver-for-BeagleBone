@@ -34,8 +34,20 @@ SOFTWARE.
 #include<stdio.h>
 #include<fcntl.h>
 #include<sys/ioctl.h>
-#include<linux/i2c.h>
-#include<linux/i2c-dev.h>
+#include <unistd.h>
+#include <linux/i2c-dev.h>
+// heuristic to guess what version of i2c-dev.h we have:
+// the one installed with `apt-get install libi2c-dev`
+// would conflict with linux/i2c.h, while the stock
+// one requires linus/i2c.h
+#ifndef I2C_SMBUS_BLOCK_MAX
+// If this is not defined, we have the "stock" i2c-dev.h
+// so we include linux/i2c.h
+#include <linux/i2c.h>
+typedef unsigned char i2c_char_t;
+#else
+typedef char i2c_char_t;
+#endif
 
 /* Header Files */
 #include "I2C.h"
@@ -216,7 +228,7 @@ int i2c_multiple_writes(int fd, int num, unsigned char *Ptr_buff)
  ****************************************************************/
 int i2c_write_register(int fd, unsigned char reg_addr_or_cntrl, unsigned char val)
 {
-	unsigned char buff[1];
+	unsigned char buff[2];
 	int ret = 0;
 	buff[0] = reg_addr_or_cntrl;
 	buff[1] = val;
@@ -245,14 +257,15 @@ void config_i2c_struct(char *i2c_dev_path, unsigned char slave_addr, I2C_DeviceP
 
 
 /****************************************************************
- * Function Name : init_i2c_dev1
- * Description   : Connect the i2c-2 bus to the slave device
+ * Function Name : init_i2c_dev
+ * Description   : Connect the i2c bus to the slave device
  * Returns       : 0 on success, -1 on failure
- * Params        @slave_addr: Slave device address
+ * Params        @i2c_path: the path to the device
+ *               @slave_addr: Slave device address
  ****************************************************************/
-int init_i2c_dev2(unsigned char slave_address)
+int init_i2c_dev(const char* i2c_path, unsigned char slave_address)
 {
-	config_i2c_struct(I2C_DEV2_PATH, slave_address, &I2C_DEV_2);
+	config_i2c_struct((char*)i2c_path, slave_address, &I2C_DEV_2);
 	if(Open_device(I2C_DEV_2.i2c_dev_path, &I2C_DEV_2.fd_i2c) == -1)
 	{
 		perror("I2C: Failed to open device |");
