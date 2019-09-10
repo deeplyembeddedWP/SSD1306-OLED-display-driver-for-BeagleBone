@@ -17,6 +17,7 @@
 /* Header Files */
 #include "I2C.h"
 #include "SSD1306_OLED.h"
+#include "example_app.h"
 
 /* Externs - I2C.c */
 extern I2C_DeviceT I2C_DEV_2;

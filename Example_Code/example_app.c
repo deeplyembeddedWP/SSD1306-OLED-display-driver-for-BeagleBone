@@ -34,7 +34,9 @@ SOFTWARE.
 #include <string.h>
 #include <stdint.h>
 #include  <signal.h>
+#include <unistd.h>
 #include "SSD1306_OLED.h"
+#include "example_app.h"
 
 /* MACRO's */
 #define LOGO16_GLCD_HEIGHT 16
@@ -46,24 +48,6 @@ SOFTWARE.
 
 /* Extern volatile */
 extern volatile unsigned char flag;
-
-/* Function Declarations */
-void testdrawline();
-void testdrawrect();
-void testfillrect();
-void testdrawcircle();
-void testdrawroundrect();
-void testdrawtriangle();
-void testfilltriangle();
-void testdrawchar();
-void testscrolltext();
-void display_texts();
-void display_texts();
-void display_bitmap();
-void display_invert_normal();
-void testdrawbitmap(const unsigned char *bitmap, unsigned char w, unsigned char h);
-void testdrawbitmap_eg();
-void deeplyembedded_credits();
 
 /* Bit Map - Taken from Adafruit SSD1306 OLED Library  */
 static const unsigned char logo16_glcd_bmp[] =

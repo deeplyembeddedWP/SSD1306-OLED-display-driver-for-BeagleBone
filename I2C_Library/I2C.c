@@ -34,6 +34,7 @@ SOFTWARE.
 #include<stdio.h>
 #include<fcntl.h>
 #include<sys/ioctl.h>
+#include <unistd.h>
 #include <linux/i2c-dev.h>
 // heuristic to guess what version of i2c-dev.h we have:
 // the one installed with `apt-get install libi2c-dev`
