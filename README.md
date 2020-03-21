@@ -7,6 +7,7 @@ The Library has 3 components:
 3. Graphics component for drawing geometrical figures, bitmaps, texts, characters, emoticons and numbers.
 
 Author: Vinay Divakar
+
 References: 
 1. https://github.com/adafruit/Adafruit_SSD1306
 2. https://github.com/adafruit/Adafruit-GFX-Library
